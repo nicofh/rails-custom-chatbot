@@ -6,7 +6,7 @@ module Api
                 skip_after_action :verify_authorized, :verify_policy_scoped
 
                 def create
-                    @answer = LlmService.new(question).generate_answer
+                    @answer = LlmService.new(question).call
                 end
 
                 private
