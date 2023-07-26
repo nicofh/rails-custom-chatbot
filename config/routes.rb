@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       get :status, to: 'api#status'
 
       devise_scope :user do
-        resource :user, only: %i[update show]
+        resources :users, only: %i[update show] do
+          scope module: :users do
+            resources :questions, only: [:create], controller: :questions
+          end
+        end
       end
       resources :settings, only: [] do
         get :must_update, on: :collection

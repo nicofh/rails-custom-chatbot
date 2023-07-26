@@ -20,6 +20,8 @@ services:
       - db
     links:
       - db:db
+    stdin_open: true
+    tty: true
   db:
     image: ankane/pgvector
     environment:
