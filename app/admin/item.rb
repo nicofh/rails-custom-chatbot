@@ -15,7 +15,6 @@ ActiveAdmin.register Item do
     id_column
     column :page_name
     column :text
-    column :embedding
     column :created_at
     column :updated_at
 
@@ -34,7 +33,9 @@ ActiveAdmin.register Item do
       row :id
       row :page_name
       row :text
-      row :embedding
+      row :has_embedding do |item|
+        item.embedding.present?
+      end
       row :created_at
       row :updated_at
     end
