@@ -8,9 +8,9 @@ class LlmService
     def generate_answer(question)
         @question = question
         message_to_chat(<<~CONTENT)
-          Answer the question below, and
-          use the context if needed,
-          don't make up any answer if you don't know just say \"I don't know\".
+          Answer the question below
+          using the provided context as first source of truth (process and analize the context first), complement with your current knowledge if needed,
+          but don't make up any answer if you don't know just say \"I don't know\". Answer in the same language as the question.
     
           Context:
           #{context}

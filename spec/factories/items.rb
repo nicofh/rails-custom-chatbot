@@ -11,8 +11,8 @@
 #
 FactoryBot.define do
   factory :item do
-    page_name { "MyString" }
-    text { "MyText" }
-    embedding { "" }
+    page_name { "PageName" }
+    text { "Text" }
+    embedding { Array.new(1536, 0.0) }
   end
 end
