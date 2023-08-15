@@ -8,7 +8,8 @@ ActiveAdmin.register Item do
       if f.object.pdf_file.attached?
         pdf_file_name = f.object.pdf_file.filename.to_s
         pdf_file_url = url_for(f.object.pdf_file)
-        f.input :pdf_file, as: :file, input_html: { style: 'display:none' }, hint: link_to(pdf_file_name, pdf_file_url)
+        f.input :pdf_file, as: :file, input_html: { style: 'display:none' },
+                           hint: link_to(pdf_file_name, pdf_file_url)
       else
         f.input :pdf_file, as: :file
       end
@@ -49,7 +50,7 @@ ActiveAdmin.register Item do
           pdf_file_url = url_for(resource.pdf_file)
           link_to(pdf_file_name, pdf_file_url)
         else
-          "No PDF file attached"
+          'No PDF file attached'
         end
       end
       row :created_at

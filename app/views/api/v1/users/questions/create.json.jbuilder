@@ -1,2 +1,1 @@
-json.answer   @answer
-
+json.answer @answer

@@ -30,7 +30,9 @@ RSpec.describe EmbeddingPopulateJob, type: :job do
       EmbeddingPopulateJob.perform_now(item_id)
 
       # Verify that the error has been logged
-      expect(Rails.logger).to have_received(:error).with(/Error while populating embedding for Item #{item_id}/)
+      expect(Rails.logger)
+        .to have_received(:error)
+        .with(/Error while populating embedding for Item #{item_id}/)
     end
   end
 end

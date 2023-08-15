@@ -20,9 +20,9 @@ gem 'jbuilder', '~> 2.10'
 gem 'matrix'
 gem 'oj', '~> 3.9', '>= 3.9.2'
 gem 'pagy', '~> 4.0'
-gem 'prawn'
 gem 'pdf-reader'
 gem 'pg', '~> 1.1', '>= 1.1.4'
+gem 'prawn'
 gem 'puma', '~> 5.6'
 gem 'pundit', '~> 2.1'
 gem 'rack-cors', '~> 1.0', '>= 1.0.6'
@@ -77,6 +77,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem "neighbor", "~> 0.2.3"
+gem 'neighbor', '~> 0.2.3'
 
-gem "ruby-openai", "~> 4.2"
+gem 'ruby-openai', '~> 4.2'
