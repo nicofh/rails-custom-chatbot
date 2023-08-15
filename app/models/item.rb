@@ -10,8 +10,8 @@
 #  updated_at :datetime         not null
 #
 class Item < ApplicationRecord
-  after_commit :parse_pdf_text, on: :create, if: :pdf_file_attached?
   after_save :populate_embedding_async, if: :saved_change_to_text?
+  after_commit :parse_pdf_text, on: :create, if: :pdf_file_attached?
 
   has_neighbors :embedding
   has_one_attached :pdf_file
@@ -23,11 +23,10 @@ class Item < ApplicationRecord
   end
 
   def populate_embedding_async
-    EmbeddingPopulateJob.perform_later(self.id)
+    EmbeddingPopulateJob.perform_later(id)
   end
 
   def parse_pdf_text
-    ParsePdfJob.perform_later(self.id)
+    ParsePdfJob.perform_later(id)
   end
-  
 end
