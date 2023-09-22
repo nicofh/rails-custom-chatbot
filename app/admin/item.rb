@@ -22,7 +22,9 @@ ActiveAdmin.register Item do
     selectable_column
     id_column
     column :page_name
-    column :text
+    column :text do |item|
+      truncate(item.text, length: 300)
+    end
     column :created_at
     column :updated_at
 
