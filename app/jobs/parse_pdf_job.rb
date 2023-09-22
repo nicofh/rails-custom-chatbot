@@ -9,6 +9,9 @@ class ParsePdfJob < ApplicationJob
     reader = PDF::Reader.new(StringIO.new(pdf_content))
     pdf_text = reader.pages.map(&:text).join("\n")
 
-    item.update!(text: pdf_text)
+    # Remove empty lines using a regular expression
+    pdf_text_without_empty_lines = pdf_text.gsub(/^\s*$/, '')
+
+    item.update!(text: pdf_text_without_empty_lines)
   end
 end
