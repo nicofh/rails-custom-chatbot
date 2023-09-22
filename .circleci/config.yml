@@ -1,0 +1,42 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:3.1.2
+        environment:
+          PG_HOST: localhost
+          PG_USER: ubuntu
+          RAILS_ENV: test
+          RACK_ENV: test
+      - image: ankane/pgvector:latest
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+    steps:
+      - checkout
+      - run:
+          name: Install Ruby Dependencies
+          command: bundle install
+      - run:
+          name: Set up DB
+          command: |
+            cp .github/test_db/config/database.yml config/database.yml
+            bundle exec rails db:create db:migrate
+      - run:
+          name: I18n Health
+          command: bundle exec i18n-tasks health
+      - run:
+          name: Run Code Analysis
+          command: bundle exec rake code:analysis
+      - run:
+          name: Run Tests
+          command: bundle exec rspec
+      - run:
+          name: Check for missing annotations
+          command: bundle exec annotate
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
