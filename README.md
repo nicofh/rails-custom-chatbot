@@ -1,147 +1,46 @@
-# Rails API Template
+# Ruby on Rails PDF Chatbot
 
-[![Github Actions CI](https://github.com/rootstrap/rails_api_base/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/rootstrap/rails_api_base/actions)
-[![Code Climate](https://codeclimate.com/github/rootstrap/rails_api_base/badges/gpa.svg)](https://codeclimate.com/github/rootstrap/rails_api_base)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/63de7f82c79f5fe82f46/test_coverage)](https://codeclimate.com/github/rootstrap/rails_api_base/test_coverage)
-
-Rails Api Base is a boilerplate project for JSON RESTful APIs. It follows the community best practices in terms of standards, security and maintainability, integrating a variety of testing and code quality tools. It's based on Rails 7.0 and Ruby 3.1.
-
-Finally, it contains a plug an play Administration console (thanks to [ActiveAdmin](https://github.com/activeadmin/activeadmin)).
+Ruby on Rails PDF Chatbot is a web application that allows users to upload PDF files and interact with a chatbot powered by the OpenAI GPT-3.5 API. Users can upload PDF files, and the application processes them, extracts text, and provides a api to ask questions and receive answers based on the content of the PDFs.
 
 ## Features
 
-This template comes with:
-- Schema
-  - Users table
-  - Admin users table
-- Endpoints
-  - Sign up with user credentials
-  - Sign in with user credentials
-  - Sign out
-  - Reset password
-  - Get and update user profile
-- Administration panel for users
-- Feature flags support with a UI for management.
-- RSpec tests
-- Code quality tools
-- API documentation following https://apiblueprint.org/
-- Docker support
-- Exception Tracking
-- RSpec API Doc Generator
+- User Authentication: Secure user authentication system.
+- PDF Upload: Users can upload PDF files.
+- PDF Processing: PDF files are processed to extract text content.
+- Chatbot API: Interactive chatbot endpoint for querying PDF content.
+- OpenAI Integration: Utilizes the OpenAI GPT-3.5 API for natural language understanding.
+- Responsive UI: User-friendly and responsive user interface.
+- Docker Support: Dockerized for easy deployment.
+- Tests: Includes RSpec tests for functionality validation.
+- Code Quality: Integrated code quality tools for maintaining codebase.
+- API Documentation: Generates API documentation following industry standards.
+- Exception Tracking: Exception tracking for monitoring and debugging.
 
-## How to use
+## How to Use
 
-1. Clone this repo
-1. Install PostgreSQL in case you don't have it
+1. Clone this repository.
 1. Run `bootstrap.sh` with the name of your project like `./bootstrap.sh --name=my_awesome_project`
+2. Set up your environment with the necessary credentials for OpenAI API.
+3. Install the required dependencies using `bundle install`.
 1. `rspec` and make sure all tests pass
-1. `rails s`
-1. You can now try your REST services!
+4. Run the Rails server with `rails s`.
+5. Access the application in your web browser.
 
-## How to use with docker
+## Docker Support
 
-1. Have `docker` and `docker-compose` installed (You can check this by doing `docker -v` and `docker-compose -v`)
-1. Run `bootstrap.sh` with the name of your project and the `-d` or `--for-docker` flag like `./bootstrap.sh --name=my_awesome_project -d`
-    1. Run `./bootstrap.sh --help` for the full details.
-1. Generate a secret key for the app by running `bin/web rake secret`, copy it and add it in your environment variables.
-1. (Optional) If you want to deny access to the database from outside of the `docker-compose` network, remove the `ports` key in the `docker-compose.yml` from the `db` service.
-1. (Optional) Run the tests to make sure everything is working with: `bin/rspec .`.
-1. You can now try your REST services!
+1. Ensure you have Docker and Docker Compose installed.
+2. Clone this repository.
+3. Run the `./bootstrap.sh` script with the name of your project and the `-d` or `--for-docker` flag to set up the project for Docker.
+4. Generate a secret key for the app using `bin/web rake secret`, and add it to your environment variables.
+5. Run tests with `bin/rspec .` to ensure everything is working.
+6. Access the application via Docker.
 
-## Dev scripts
-This template provides a handful of scripts to make your dev experience better!
+## Code Quality
 
-- bin/bundle to run any `bundle` commands.
-  - `bin/bundle install`
-- bin/rails to run any `rails` commands
-  - `bin/rails console`
-- bin/web to run any `bash` commands
-  - `bin/web ls`
-- bin/rspec to run specs
-  - `bin/rspec .`
+Run code analysis tools with the following commands:
 
-You don't have to use these but they are designed to run the same when running with docker or not.
-To illustrate, `bin/rails console` will run the console in the docker container when running with docker and locally when not.
-
-## Gems
-
-- [ActiveAdmin](https://github.com/activeadmin/activeadmin) for easy administration
-- [Arctic Admin](https://github.com/cprodhomme/arctic_admin) for responsive active admin
-- [Annotate](https://github.com/ctran/annotate_models) for doc the schema in the classes
-- [Better Errors](https://github.com/charliesome/better_errors) for a better error page
-- [Brakeman](https://github.com/presidentbeef/brakeman) for static analysis security
-- [Byebug](https://github.com/deivid-rodriguez/byebug) for debugging
-- [DelayedJob](https://github.com/collectiveidea/delayed_job) for background processing
-- [Devise](https://github.com/plataformatec/devise) for basic auth
-- [Devise Token Auth](https://github.com/lynndylanhurley/devise_token_auth) for api auth
-- [Dotenv](https://github.com/bkeepers/dotenv) for handling environment variables
-- [Draper](https://github.com/drapergem/draper) for decorators
-- [ExceptionHunter](https://github.com/rootstrap/exception_hunter) for exception tracking
-- [Factory Bot](https://github.com/thoughtbot/factory_bot) for testing data
-- [Faker](https://github.com/stympy/faker) for generating test data
-- [Flipper](https://github.com/jnunemaker/flipper) for feature flag support
-- [Jbuilder](https://github.com/rails/jbuilder) for json views
-- [Letter Opener](https://github.com/ryanb/letter_opener) for previewing a mail in the browser
-- [Oj](https://github.com/ohler55/oj) for optimized json
-- [Pagy](https://github.com/ddnexus/pagy) for pagination
-- [Prosopite](https://github.com/charkost/prosopite) to detect N+1 queries
-- [Pry](https://github.com/pry/pry) for enhancing the ruby shell
-- [Puma](https://github.com/puma/puma) for the server
-- [Pundit](https://github.com/varvet/pundit) for authorization management
-- [Rack CORS](https://github.com/cyu/rack-cors) for handling CORS
-- [Rails Best Practices](https://github.com/flyerhzm/rails_best_practices) for rails linting
-- [Reek](https://github.com/troessner/reek) for ruby linting
-- [RSpec](https://github.com/rspec/rspec) for testing
-- [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation) for API documentation
-- [Rubocop](https://github.com/bbatsov/rubocop/) for ruby linting
-- [Sendgrid](https://github.com/stephenb/sendgrid) for sending mails
-- [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers) adds other testing matchers
-- [Simplecov](https://github.com/colszowka/simplecov) for code coverage
-- [Webmock](https://github.com/bblimke/webmock) for stubbing http requests
-- [YAAF](https://github.com/rootstrap/yaaf) for form objects
-
-## Optional configuration
-
-- Set your [frontend URL](https://github.com/cyu/rack-cors#origin) in `config/initializers/rack_cors.rb`
-- Set your mail sender in `config/initializers/devise.rb`
-- Config your timezone accordingly in `application.rb`.
-
-## Api Docs
-
-https://railsapibasers.docs.apiary.io/
-
-With [RSpec API Doc Generator](https://github.com/zipmark/rspec_api_documentation) you can generate the docs after writing the acceptance specs.
-
-Just run:
-
-`./bin/docs `
-
-An `apiary.apib` file will be generated at the root directory of the project.
-
-
-## Code quality
-
-With `bundle exec rails code:analysis` you can run the code analysis tool, you can omit rules with:
-
-- [Rubocop](https://github.com/bbatsov/rubocop/blob/master/config/default.yml) Edit `.rubocop.yml`
-- [Reek](https://github.com/troessner/reek#configuration-file) Edit `config.reek`
-- [Rails Best Practices](https://github.com/flyerhzm/rails_best_practices#custom-configuration) Edit `config/rails_best_practices.yml`
-- [Brakeman](https://github.com/presidentbeef/brakeman) Run `brakeman -I` to generate `config/brakeman.ignore`
-
-## Configuring Code Climate
-1. After adding the project to CC, go to `Repo Settings`
-1. On the `Test Coverage` tab, copy the `Test Reporter ID`
-1. Set the current value of `CC_TEST_REPORTER_ID` in the [circle-ci project env variables](https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project)
-
-## Code Owners
-
-You can use [CODEOWNERS](https://help.github.com/en/articles/about-code-owners) file to define individuals or teams that are responsible for code in the repository.
-
-Code owners are automatically requested for review when someone opens a pull request that modifies code that they own.
+- `bundle exec rails code:analysis`: Runs various code analysis tools.
 
 ## Credits
 
-Rails Api Base is maintained by [Rootstrap](http://www.rootstrap.com) with the help of our
-[contributors](https://github.com/rootstrap/rails_api_base/contributors).
-
-[<img src="https://s3-us-west-1.amazonaws.com/rootstrap.com/img/rs.png" width="100"/>](http://www.rootstrap.com)
+Ruby on Rails PDF Chatbot was branched off of Rootstrap's [rails_api_base](https://github.com/rootstrap/rails_api_base) project.
