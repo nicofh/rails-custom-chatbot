@@ -22,6 +22,7 @@ Ruby on Rails PDF Chatbot is a web application that allows users to upload PDF f
 1. Run `bootstrap.sh` with the name of your project like `./bootstrap.sh --name=my_awesome_project`
 2. Set up your environment with the necessary credentials for OpenAI API.
 3. Install the required dependencies using `bundle install`.
+4. Set up database `rails db:create` `rails db:migrate`
 1. `rspec` and make sure all tests pass
 4. Run the Rails server with `rails s`.
 5. Access the application in your web browser.
