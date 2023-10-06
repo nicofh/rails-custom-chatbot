@@ -42,7 +42,7 @@ class LlmService
       :embedding, question_embedding,
       distance: 'euclidean'
     )
-    nearest_items.first.text
+    nearest_items.first&.text
   end
 
   def embedding_for(text)
