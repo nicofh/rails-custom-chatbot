@@ -1,7 +1,6 @@
 module Api
   module V1
     class QuestionsController < Api::V1::ApiController
-      skip_before_action :authenticate_user!
       skip_after_action :verify_authorized, :verify_policy_scoped
 
       def create

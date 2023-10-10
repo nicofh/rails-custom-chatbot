@@ -71,5 +71,6 @@ module App
     ENV['DISABLE_RAILS_STRICT_LOADING'] ||= 'true' if defined?(Rails::Console)
     config.active_record.strict_loading_by_default = ENV['DISABLE_RAILS_STRICT_LOADING'] != 'true'
     config.active_record.action_on_strict_loading_violation = :log
+    config.action_controller.forgery_protection_origin_check = false
   end
 end
