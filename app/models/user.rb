@@ -40,17 +40,17 @@ class User < ApplicationRecord
 
   before_validation :init_uid
 
-  def full_name
-    return username if first_name.blank?
-
-    "#{first_name} #{last_name}"
-  end
-
   def self.from_social_provider(provider, user_params)
     where(provider:, uid: user_params['id']).first_or_create! do |user|
       user.password = Devise.friendly_token[0, 20]
       user.assign_attributes user_params.except('id')
     end
+  end
+
+  def full_name
+    return username if first_name.blank?
+
+    "#{first_name} #{last_name}"
   end
 
   private

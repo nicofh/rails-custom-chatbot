@@ -2,12 +2,17 @@
 #
 # Table name: items
 #
-#  id         :bigint           not null, primary key
-#  page_name  :string
-#  text       :text
-#  embedding  :vector(1536)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id               :bigint           not null, primary key
+#  name             :string
+#  text             :text
+#  embedding        :vector(1536)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  previous_item_id :bigint
+#
+# Indexes
+#
+#  index_items_on_previous_item_id  (previous_item_id)
 #
 require 'rails_helper'
 
@@ -41,7 +46,7 @@ RSpec.describe Item, type: :model do
       before { item.save! }
       it 'does not trigger populate_embedding_async after save' do
         expect(item).not_to receive(:populate_embedding_async)
-        item.update!(page_name: 'New page name')
+        item.update!(name: 'New name')
       end
     end
   end

@@ -31,3 +31,7 @@ Rails/Delegate:
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - app/controllers/api/v1/api_controller.rb
+
+Rails/ThreeStateBooleanColumn:
+  Exclude:
+    - db/migrate/20161011151353_devise_create_users.rb
