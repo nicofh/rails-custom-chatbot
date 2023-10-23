@@ -9,7 +9,7 @@ describe 'GET api/v1/users/passwords/edit', type: :request do
   end
 
   it 'returns a the access token, uid and client id' do
-    get edit_user_password_path, params: params
+    get(edit_user_password_path, params:)
     expect(response.header['Location']).to include('token')
     expect(response.header['Location']).to include('uid')
     expect(response.header['Location']).to include('client_id')

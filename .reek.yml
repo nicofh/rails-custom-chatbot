@@ -23,7 +23,8 @@ detectors:
     allow_calls: []
   FeatureEnvy:
     enabled: true
-    exclude: []
+    exclude:
+      - 'ParsePdfJob#extract_pdf_text'
   InstanceVariableAssumption:
     enabled: false
   IrresponsibleModule:

@@ -4,6 +4,7 @@ ruby '~> 3.1.2'
 gem 'rails', '~> 7.0.6'
 
 gem 'activeadmin', '~> 2.9'
+gem 'activerecord-import'
 gem 'active_storage_base64', '~> 2.0.0'
 gem 'arctic_admin', '~> 3.3.0'
 gem 'aws-sdk-s3', '~> 1.75', require: false

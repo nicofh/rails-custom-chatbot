@@ -1,9 +1,9 @@
 ActiveAdmin.register Item do
-  permit_params :page_name, :text, :pdf_file
+  permit_params :name, :text, :pdf_file
 
   form do |f|
     f.inputs 'Details' do
-      f.input :page_name
+      f.input :name
       f.input :text
       if f.object.pdf_file.attached?
         pdf_file_name = f.object.pdf_file.filename.to_s
@@ -21,9 +21,9 @@ ActiveAdmin.register Item do
   index do
     selectable_column
     id_column
-    column :page_name
+    column :name
     column :text do |item|
-      truncate(item.text, length: 300)
+      truncate(item.text, length: 100)
     end
     column :created_at
     column :updated_at
@@ -32,7 +32,7 @@ ActiveAdmin.register Item do
   end
 
   filter :id
-  filter :page_name
+  filter :name
   filter :text
   filter :embedding
   filter :created_at
@@ -41,7 +41,7 @@ ActiveAdmin.register Item do
   show do
     attributes_table do
       row :id
-      row :page_name
+      row :name
       row :text
       row :has_embedding do |item|
         item.embedding.present?

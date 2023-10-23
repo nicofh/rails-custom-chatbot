@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_185849) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_22_155934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -120,11 +120,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_185849) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "page_name"
+    t.string "name"
     t.text "text"
     t.vector "embedding", limit: 1536
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "previous_item_id"
+    t.index ["previous_item_id"], name: "index_items_on_previous_item_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -161,4 +163,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_185849) do
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "exception_hunter_errors", "exception_hunter_error_groups", column: "error_group_id"
+  add_foreign_key "items", "items", column: "previous_item_id"
 end
